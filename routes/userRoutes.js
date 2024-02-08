@@ -18,7 +18,13 @@ router.put('/admin/verify-otp', verifyOTP);
 router.post('/admin/signin', signInUser);
 
 // Update Account Details
+router.put('/admin/update-user', middleware , profileUpdate);
 
+// // Get Dashboard Details
+// router.get('/admin/dashboard', middleware, getDashboardDetails);
+
+// // Update Dashboard Details
+// router.put('/admin/dashboard/:id', middleware, updateDashboardDetails);
 
 
 module.exports = router
