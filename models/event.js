@@ -49,6 +49,7 @@ const eventSchema = new mongose.Schema({
             },
             status : {
                 type : String
+                // enum
             },
             sharedImagesArray : [
                 {
@@ -100,3 +101,6 @@ const eventSchema = new mongose.Schema({
         default : Date.now
     }
 })
+
+const eventModel = mongose.model('event', eventSchema);
+module.exports = eventModel

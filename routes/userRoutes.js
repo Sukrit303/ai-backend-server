@@ -5,6 +5,7 @@ const middleware = require("../middleware/account");
 const { registerUser,
     verifyOTP,
     signInUser,
+    profileUpdate,
     getDashboardDetails,
     updateDashboardDetails} = require("../controller/userController");
 

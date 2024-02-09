@@ -147,6 +147,34 @@ const signInUser = async (req, res) => {
     }
 };
 
+// Update User profile
+const profileUpdate = async (req, res) => {
+    try {
+        const { id } = req.account;
+        const userData = req.body;
+        if(userData.password){
+            const saltRounds = 10;
+            const salt = await bcrypt.genSalt(saltRounds);
+            const hashedPassword = await bcrypt.hash(userData.password, salt);
+            userData.password = hashedPassword;
+        }
+        const dbUpdateUserData = await User.findByIdAndUpdate(id, userData);
+        return res.status(200).json({ success: true, dbUpdateUserData });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
+// Add user in dashboard 
+const addUserInDashboard = async (req, res) => {
+    
+}
+
+
+
+
+
 const getDashboardDetails = async (req, res) => {
     try {
         const userData = await User.findById({ _id: req.admin._id });
